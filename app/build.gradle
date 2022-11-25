@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'jacoco'
+    id 'org.jlleitschuh.gradle.ktlint'
 }
 
 apply from: "$project.rootDir/jacoco.gradle"
@@ -48,12 +49,22 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 }
 
-configurations.all{
-    resolutionStrategy {
-        eachDependency { details ->
-            if ('org.jacoco' == details.requested.group) {
-                details.useVersion "0.8.7"
-            }
-        }
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+ktlint {
+    android.set(true)
+    // debug.set(true)
+    // verbose.set(true)
+    outputToConsole.set(true)
+    outputColorName.set("RED")
+    // additionalEditorconfigFile = file(".editorconfig")
+    filter {
+        exclude("**/build/**")
+        include("**/kotlin/**")
     }
 }
