@@ -15,7 +15,7 @@ before_script:
     - export GRADLE_USER_HOME=$PWD/.gradle
 
 lint:
-  stage: test
+  stage: lint
   script:
     - ./gradlew ktlintCheck
     - ./gradlew detekt
@@ -23,7 +23,7 @@ lint:
     - merge_requests
 
 test:
-  stage: lint
+  stage: test
   script:
     - ./gradlew testDebugUnitTest
     - ./gradlew createDebugCoverageReport 
