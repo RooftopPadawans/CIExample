@@ -12,12 +12,6 @@ testDebug:
     - export GRADLE_USER_HOME=$PWD/.gradle
   script:
     - ./gradlew test
-stages:
-  - test
-cache:
-  paths:
-    - .gradle/wrapper
-    - .gradle/caches
 lintDebug:
   stage: test
   before_script:
