@@ -1,6 +1,7 @@
 image: openjdk:11-jdk
 
 stages:
+  - lint
   - test
   - build
 cache:
@@ -12,9 +13,14 @@ before_script:
     - chmod +x ./gradlew
     - export GRADLE_USER_HOME=$PWD/.gradle
 
-lintDebug:
+lint:
   stage: test
   script:
     - ./gradlew ktlintCheck
     - ./gradlew detekt
 
+test:
+  stage: lint
+  script:
+    - ./gradlew testDebugUnitTest
+    - ./gradlew createDebugCoverageReport 
