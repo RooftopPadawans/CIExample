@@ -1,4 +1,4 @@
-package com.flknlabs.gitlabci_example
+package com.flknlabs.gitlabciexample
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

@@ -1,4 +1,4 @@
-package com.flknlabs.gitlabci_example
+package com.flknlabs.gitlabciexample
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
