@@ -12,13 +12,9 @@ before_script:
     - chmod +x ./gradlew
     - export GRADLE_USER_HOME=$PWD/.gradle
 
-testDebug:
-  stage: test
-  script:
-    - ./gradlew test
-
 lintDebug:
   stage: test
   script:
     - ./gradlew ktlintCheck
+    - ./gradlew detekt
 
